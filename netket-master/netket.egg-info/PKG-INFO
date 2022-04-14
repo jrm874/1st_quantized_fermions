@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: netket
+Version: 3.0
+Summary: UNKNOWN
+Home-page: http://github.com/netket/netket
+Author: Giuseppe Carleo et al.
+Author-email: netket@netket.org
+License: Apache 2.0
+Description: NetKet is an open - source project delivering cutting - edge
+                 methods for the study of many - body quantum systems with artificial
+                 neural networks and machine learning techniques.
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Provides-Extra: dev
+Provides-Extra: mpi
+Provides-Extra: jax
+Provides-Extra: all
