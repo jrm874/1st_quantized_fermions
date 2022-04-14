@@ -22,5 +22,6 @@ The script wavefunction.py contains the JAX implementation of the wave
 function, as well as the definition of the operators that enter the
 Hamiltonian.
 
-The VMC sampler and optimizer use the netket backend provided in this
-repository.
+This implementation uses NetKet as a backend that handles the sampling,
+optimization of the wave function and the calculation of expectation
+values. The NetKet backend is provided in this repository.
