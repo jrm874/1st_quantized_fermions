@@ -1,4 +1,4 @@
-# __NetKet for fermions__
+# __NetKet for 1st quantized fermions__
 
 
 Requirements:

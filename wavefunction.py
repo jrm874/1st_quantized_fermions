@@ -1,15 +1,8 @@
-import sys
-
-sys.path.append('/mnt/home/jrmoreno/netket_davelopment/netket-master')
-
-import netket as nk
 import numpy as np
-from netket.hilbert.spin import Spin
 import jax.numpy as jnp
 import jax
 from jax import jit
 from jax import vmap
-import time as t
 from jax.experimental import stax
 
 
@@ -59,7 +52,7 @@ def HFDS(L, N, H):
         orbitals = params[0]
         b_params = params[1]
         helper = occupation_constructor(inputs)
-        occupations = 2*(jnp.sum(helper, axis = -2)-0.5) #normalized to live in [-1,1]
+        occupations = 2*(jnp.sum(helper, axis = -2)-0.5)
         matrix = jnp.dot(helper, orbitals)
         for i in range(H):
             last_row = jnp.expand_dims(eval_b(b_params[i], occupations), axis = -2)
@@ -70,3 +63,27 @@ def HFDS(L, N, H):
     return init_fun, apply_fun
 
 
+#site particle number n_i
+def number(local_dim):
+    n = np.eye(local_dim)
+    n[0,0] = 0
+    return n
+
+#density-density operator
+def double_occupancy(local_dim):
+    nn = np.eye((local_dim)**2)
+    for i in range(local_dim):
+        nn[i,i] = 0
+    for i in range(local_dim-1):
+        nn[(i+1)*(local_dim), (i+1)*(local_dim)] = 0
+
+    return nn
+
+#Transition operator c^\dag_i + c_j + C.C.
+def transition(local_dim):
+    T = np.zeros(((local_dim) ** 2, (local_dim) ** 2))
+
+    for i in range(local_dim-1):
+        T[(i + 1) * (local_dim), (i + 1)] = -1
+    T = T + np.transpose(T)
+    return T
