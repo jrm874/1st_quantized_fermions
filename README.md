@@ -17,3 +17,10 @@ square Hubbard model at quarter occupation with onsite repulsion U = 10.
 To run just use:
 
 ```python3 run_hubbard.py```
+
+The script wavefunction.py contains the JAX implementation of the wave
+function, as well as the definition of the operators that enter the
+Hamiltonian.
+
+The VMC sampler and optimizer use the netket backend provided in this
+repository.
