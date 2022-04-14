@@ -14,3 +14,6 @@ The script run_hubbard.py is an example of the optimization of the
 hidden fermion determinant state where the hidden sub-matrix is
 parametrized by multilayer perceptrons. The physical system is a 4X4
 square Hubbard model at quarter occupation with onsite repulsion U = 10.
+To run just use:
+
+```python3 run_hubbard.py```
